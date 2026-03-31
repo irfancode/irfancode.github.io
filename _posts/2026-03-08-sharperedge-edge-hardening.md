@@ -143,4 +143,6 @@ The best configuration is one that users will actually use—sustainable privacy
 
 **About the Author**
 
-A CTO and Solution Architect with 15+ years of experience designing scalable systems and leading technical strategy. Connect on [LinkedIn](https://linkedin.com/in/sirfan98cs) | [GitHub](https://github.com/irfancode).
+Designing DevOps and platform engineering capabilities that align technology with business goals—accelerating time-to-market and operational efficiency.
+
+Connect: [LinkedIn](https://linkedin.com/in/sirfan98cs) | [GitHub](https://github.com/irfancode)
