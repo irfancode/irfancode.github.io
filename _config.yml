@@ -1,0 +1,12 @@
+title: "Irfan Writes"
+email: irfan@irfancode.dev
+description: "DevOps, Cloud, and Technology Blog"
+baseurl: ""
+url: "https://irfancode.github.io"
+github_username: irfancode
+twitter_username: IrfanWrite
+
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed
