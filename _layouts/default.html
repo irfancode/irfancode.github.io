@@ -3,25 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ page.title }} | Irfan Writes</title>
+  <title>{% if page.title %}{{ page.title }} | {% endif %}Irfan Writes</title>
+  <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}DevOps, Cloud, and Technology Blog by Irfan{% endif %}">
+  <meta name="author" content="Irfan">
+  <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}Irfan Writes{% endif %}">
+  <meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}DevOps, Cloud, and Technology Blog{% endif %}">
+  <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@IrfanWrite">
+  <meta name="twitter:creator" content="@IrfanWrite">
   <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
 </head>
 <body>
   <header>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/blog/">Blog</a>
-      <a href="https://github.com/irfancode" target="_blank">GitHub</a>
-      <a href="https://linkedin.com/in/sirfan98cs" target="_blank">LinkedIn</a>
-    </nav>
+    <div class="nav-inner">
+      <a href="/" class="site-title">Irfan Writes</a>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog/">Blog</a>
+        <a href="https://github.com/irfancode" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/sirfan98cs" target="_blank" rel="noopener">LinkedIn</a>
+      </nav>
+    </div>
   </header>
-  
+
   <main>
     {{ content }}
   </main>
-  
+
   <footer>
-    <p>&copy; {{ site.time | date: '%Y' }} Irfan Writes. Connect: <a href="https://linkedin.com/in/sirfan98cs">LinkedIn</a> | <a href="https://github.com/irfancode">GitHub</a></p>
+    <p>&copy; {{ site.time | date: '%Y' }} Irfan Writes &mdash;
+      <a href="https://linkedin.com/in/sirfan98cs">LinkedIn</a> &middot;
+      <a href="https://github.com/irfancode">GitHub</a> &middot;
+      <a href="https://twitter.com/IrfanWrite">Twitter</a>
+    </p>
   </footer>
 </body>
 </html>

@@ -3,21 +3,53 @@ layout: default
 title: Home
 ---
 <section class="home">
-  <h1>Irfan Writes</h1>
-  <p class="home-intro">DevOps, Cloud, and Technology Blog</p>
-  
-  <h2>Recent Posts</h2>
-  <ul class="post-list">
-    {% for post in site.posts limit:5 %}
-    <li>
-      <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
-      <div class="post-meta">
-        <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%B %d, %Y" }}</time>
-        {% if post.category %} | {{ post.category }}{% endif %}
+  <div class="home-hero">
+    <h1>Irfan Writes</h1>
+    <p class="subtitle">DevOps, Cloud, Platform Engineering &amp; Emerging Technology</p>
+    <div class="stats-row">
+      <div class="stat">
+        <div class="number">{{ site.posts | size }}</div>
+        <div class="label">Articles</div>
       </div>
-    </li>
-    {% endfor %}
-  </ul>
-  
-  <p><a href="/blog/">View all posts &rarr;</a></p>
+      <div class="stat">
+        <div class="number">20+</div>
+        <div class="label">Years Experience</div>
+      </div>
+      <div class="stat">
+        <div class="number">55</div>
+        <div class="label">Open Source Projects</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="blog-section">
+    <div class="section-title">
+      <span class="icon">↑</span>
+      Recent Posts
+    </div>
+    <div class="post-grid">
+      {% for post in site.posts limit:6 %}
+      <div class="post-card">
+        {% if post.category %}
+        <span class="category-badge {{ post.category }}">{{ post.category }}</span>
+        {% endif %}
+        <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
+        <div class="post-meta">
+          <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%B %d, %Y" }}</time>
+        </div>
+        {% if post.tags %}
+        <div class="post-tags">
+          {% for tag in post.tags limit:3 %}
+          <span class="tag">{{ tag }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+
+    <div style="text-align:center;">
+      <a href="/blog/" class="view-all-link">View all posts →</a>
+    </div>
+  </div>
 </section>
