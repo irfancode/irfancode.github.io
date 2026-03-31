@@ -245,4 +245,6 @@ The organizations that thrive will be those that treat security as a strategic c
 
 **About the Author**
 
-A CTO and Solution Architect with 15+ years of experience designing scalable systems and leading technical strategy. Connect on [LinkedIn](https://linkedin.com/in/sirfan98cs) or [GitHub](https://github.com/irfancode).
+Designing DevOps and platform engineering capabilities that align technology with business goals—accelerating time-to-market and operational efficiency.
+
+Connect: [LinkedIn](https://linkedin.com/in/sirfan98cs) | [GitHub](https://github.com/irfancode)
