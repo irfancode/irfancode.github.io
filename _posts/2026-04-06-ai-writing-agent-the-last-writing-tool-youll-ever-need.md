@@ -6,7 +6,7 @@ categories: [AI, Open Source, Writing Tools]
 tags: [AI Writing, Open Source, Free Tools, Productivity]
 ---
 
-*Stop Paying $49/month for AI Writing. Start Writing for Free.*
+*Stop Paying $49/month for AI Writing. Start Writing for Free. No API Keys Required.*
 
 Let me paint a picture. It's 7 AM. You have three blog posts, a client email, and a LinkedIn article due by noon. The coffee is brewing. The cursor blinks.
 
@@ -18,7 +18,7 @@ For years, professional writers, marketers, and content creators have been held 
 
 ## Introducing AI Writing Agent
 
-I built [AI Writing Agent](https://github.com/irfancode/ai-writing-agent-v2v2) because I was tired of:
+I built [AI Writing Agent](https://github.com/irfancode/ai-writing-agent-v2) because I was tired of:
 
 - Paying monthly fees for tools I barely used
 - Watching my content look like everyone else's AI content
@@ -26,12 +26,13 @@ I built [AI Writing Agent](https://github.com/irfancode/ai-writing-agent-v2v2) b
 - Not having access to the best models
 - Waiting forever for responses during peak hours
 
-**AI Writing Agent is:**
-- ✅ **100% Free** - Works on free-tier APIs (Groq, Together AI, HuggingFace)
-- ✅ **100% Open Source** - Inspect, modify, extend to your heart's content
-- ✅ **100% Private** - Run locally with Ollama if you want
+**AI Writing Agent works RIGHT OUT OF THE BOX:**
+- ✅ **Zero Config** - Just run `pip install` and write
+- ✅ **100% Free** - Built-in demo mode works immediately
+- ✅ **100% Open Source** - Inspect, modify, extend
+- ✅ **Optional: Real AI** - Add free API keys for more power
 - ✅ **100% Fast** - Uses Groq's free tier for sub-second responses
-- ✅ **100% Flexible** - Switch between providers automatically
+- ✅ **Privacy First** - Run locally with Ollama if you prefer
 
 ## But Does It Actually Work?
 
@@ -130,52 +131,59 @@ Jennifer is writing her first novel. She uses:
 
 > "It's like having a writing partner who never gets tired and always has ideas." - Jennifer M.
 
-## How to Get Started (5 Minutes)
+## How to Get Started (2 Minutes)
 
-### Step 1: Clone the Repo
-
-```bash
-git clone https://github.com/irfancode/ai-writing-agent-v2v2.git
-cd ai-writing-agent
-```
-
-### Step 2: Install Dependencies
+### Step 1: Clone and Install
 
 ```bash
-python -m venv venv
-source venv/bin/activate
+git clone https://github.com/irfancode/ai-writing-agent-v2.git
+cd ai-writing-agent-v2
+python3 -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### Step 3: (Optional) Get Free API Keys
-
-For maximum power, get free API keys:
-
-1. **Groq** (fastest): https://console.groq.com/keys
-   - 14,400 requests/day free
-   
-2. **Together AI** (best variety): https://api.together.xyz
-   - 5 million tokens/month free
+### Step 2: Write Something Amazing (No API Keys Needed!)
 
 ```bash
-export GROQ_API_KEY="gsk_your_key_here"
-export TOGETHER_API_KEY="tk_your_key_here"
+# Works immediately - no configuration required!
+python3 -m src.cli.main write "Write a haiku about artificial intelligence"
 ```
 
-### Step 4: Write Something Amazing
+**Output:**
+```
+ℹ Initializing AI Writing Agent...
+✓ Ready! (Demo mode)
+
+Generated Content
+
+Code compiles clean,
+Errors vanish in the night,
+Pure logic flows free.
+```
+
+### Step 3: (Optional) Add Free API Keys for Real AI
+
+Get free keys from [Groq](https://console.groq.com/keys) or [Together AI](https://api.together.xyz):
 
 ```bash
-# Basic write
-python -m src.cli.main write "Write a haiku about artificial intelligence"
-
-# With thinking
-python -m src.cli.main think "Outline a mystery novel chapter"
-
-# Full pipeline
-python -m src.cli.main pipeline "The Future of Remote Work"
+export GROQ_API_KEY="your_free_key"
+python3 -m src.cli.main write "Write a haiku about AI"
 ```
 
-**That's it. No credit card. No monthly fees. No limits.**
+**That's it. No credit card. No monthly fees. No API keys required - it just works!**
+
+## Other Commands
+
+```bash
+# Deep thinking/planning
+python3 -m src.cli.main think "Outline a mystery novel chapter"
+
+# Edit text with AI
+python3 -m src.cli.main edit --text "The cat go store" --instruction "Fix grammar"
+
+# List available models
+python3 -m src.cli.main models
+```
 
 ## Why This Matters
 
