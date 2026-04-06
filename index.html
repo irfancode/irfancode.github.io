@@ -22,6 +22,29 @@ title: Home
     </div>
   </div>
 
+  <div class="featured-project">
+    <div class="section-title">
+      <span class="icon">🚀</span>
+      Featured Project
+    </div>
+    <div class="featured-card">
+      <h2><a href="/projects/ai-writing-agent/">AI Writing Agent</a></h2>
+      <p class="featured-tagline">The Ultimate Open-Source AI Writing System for 2026</p>
+      <div class="featured-features">
+        <span class="feature-tag">100% Free</span>
+        <span class="feature-tag">Open Source</span>
+        <span class="feature-tag">Zero API Keys Required</span>
+      </div>
+      <p class="featured-description">
+        Stop paying $49/month for AI writing tools. AI Writing Agent uses free-tier APIs from Groq, Together AI, and HuggingFace to deliver professional writing assistance at zero cost.
+      </p>
+      <div class="featured-actions">
+        <a href="/projects/ai-writing-agent/" class="featured-btn primary">Learn More →</a>
+        <a href="https://github.com/irfancode/ai-writing-agent-v2" class="featured-btn secondary">GitHub →</a>
+      </div>
+    </div>
+  </div>
+
   <div class="blog-section">
     <div class="section-title">
       <span class="icon">↑</span>
@@ -53,3 +76,101 @@ title: Home
     </div>
   </div>
 </section>
+
+<style>
+.featured-project {
+  padding: 4rem 2rem;
+  background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);
+}
+
+.featured-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2.5rem;
+  max-width: 900px;
+  margin: 2rem auto 0;
+}
+
+.featured-card h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.featured-card h2 a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.featured-tagline {
+  color: var(--secondary);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.featured-features {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.feature-tag {
+  background: rgba(99, 102, 241, 0.2);
+  color: var(--primary);
+  padding: 0.25rem 0.75rem;
+  border-radius: 50px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.featured-description {
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.featured-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.featured-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.featured-btn.primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+}
+
+.featured-btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+.featured-btn.secondary {
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+
+.featured-btn.secondary:hover {
+  background: var(--border);
+}
+
+@media (max-width: 768px) {
+  .featured-card {
+    padding: 1.5rem;
+  }
+  
+  .featured-card h2 {
+    font-size: 1.5rem;
+  }
+}
+</style>
