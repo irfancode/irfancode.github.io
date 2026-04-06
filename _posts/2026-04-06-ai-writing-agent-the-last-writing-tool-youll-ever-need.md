@@ -18,7 +18,7 @@ For years, professional writers, marketers, and content creators have been held 
 
 ## Introducing AI Writing Agent
 
-I built [AI Writing Agent](https://github.com/irfancode/ai-writing-agent-v2) because I was tired of:
+I built [AI Writing Agent](https://github.com/irfancode/ai-writing-agent-v2v2) because I was tired of:
 
 - Paying monthly fees for tools I barely used
 - Watching my content look like everyone else's AI content
@@ -135,7 +135,7 @@ Jennifer is writing her first novel. She uses:
 ### Step 1: Clone the Repo
 
 ```bash
-git clone https://github.com/irfancode/ai-writing-agent-v2.git
+git clone https://github.com/irfancode/ai-writing-agent-v2v2.git
 cd ai-writing-agent
 ```
 
@@ -219,7 +219,7 @@ This is an open-source project. Contributions welcome:
 - 📝 Improve documentation
 - 🔧 Submit PRs
 
-**Repository:** https://github.com/irfancode/ai-writing-agent-v2
+**Repository:** https://github.com/irfancode/ai-writing-agent-v2v2
 
 ---
 
@@ -248,12 +248,12 @@ This is an open-source project. Contributions welcome:
 
 ## Ready to Transform Your Writing?
 
-**[Get Started on GitHub →](https://github.com/irfancode/ai-writing-agent-v2)**
+**[Get Started on GitHub →](https://github.com/irfancode/ai-writing-agent-v2v2)**
 
 Or try it now (mock mode, no API key needed):
 
 ```bash
-git clone https://github.com/irfancode/ai-writing-agent-v2.git
+git clone https://github.com/irfancode/ai-writing-agent-v2v2.git
 cd ai-writing-agent
 python -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
