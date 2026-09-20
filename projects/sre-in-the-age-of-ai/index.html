@@ -1,0 +1,402 @@
+---
+layout: default
+title: SRE in the Age of AI — Starter Kit
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SRE in the Age of AI — {{ page.title }}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4338ca;
+            --secondary: #10b981;
+            --accent: #f59e0b;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --border: #334155;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 50%, #020617 100%);
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.15) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1; }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white; padding: 0.5rem 1.25rem; border-radius: 50px;
+            font-size: 0.875rem; font-weight: 600; margin-bottom: 1.5rem;
+            text-transform: uppercase; letter-spacing: 0.05em;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem; font-weight: 800; margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fff 0%, #c7d2fe 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; line-height: 1.1;
+        }
+
+        .hero .subtitle {
+            font-size: 1.25rem; color: var(--text-secondary);
+            max-width: 720px; margin: 0 auto 2.5rem;
+        }
+
+        .cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+        .btn {
+            padding: 1rem 2rem; border-radius: 12px; font-weight: 600;
+            font-size: 1rem; text-decoration: none; transition: all 0.3s ease;
+            display: inline-flex; align-items: center; gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white; box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px); box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+        }
+
+        .btn-secondary {
+            background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover { background: var(--border); }
+
+        .section { padding: 5rem 2rem; }
+
+        .section-alt { background: linear-gradient(180deg, var(--bg-dark) 0%, #1e1b4b 100%); }
+
+        .section-title {
+            text-align: center; font-size: 2.25rem; font-weight: 700; margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center; color: var(--text-secondary);
+            font-size: 1.125rem; max-width: 650px; margin: 0 auto 3rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .feature-card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 16px; padding: 2rem; transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--primary); transform: translateY(-4px);
+        }
+
+        .feature-icon {
+            width: 56px; height: 56px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.75rem; margin-bottom: 1.25rem;
+        }
+
+        .feature-card h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.75rem; }
+        .feature-card p { color: var(--text-secondary); font-size: 0.9375rem; }
+
+        .book-list {
+            max-width: 760px; margin: 0 auto;
+            display: grid; gap: 1rem;
+        }
+
+        .book-item {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 16px; padding: 1.5rem 2rem;
+            display: flex; justify-content: space-between; align-items: center; gap: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .book-item:hover { border-color: var(--primary); transform: translateX(4px); }
+
+        .book-item h4 { font-size: 1.05rem; font-weight: 600; }
+        .book-item p { color: var(--text-secondary); font-size: 0.875rem; margin-top: 0.25rem; }
+
+        .book-link {
+            color: var(--primary); font-weight: 600; font-size: 0.875rem;
+            text-decoration: none; white-space: nowrap; border: 1px solid var(--border);
+            padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease;
+        }
+
+        .book-link:hover { border-color: var(--primary); background: rgba(99, 102, 241, 0.1); }
+
+        .table-section { background: var(--bg-dark); }
+
+        .table-wrapper {
+            background: var(--bg-card); border-radius: 16px;
+            overflow: hidden; border: 1px solid var(--border); max-width: 900px; margin: 0 auto;
+        }
+
+        .table-wrapper table { width: 100%; border-collapse: collapse; }
+
+        .table-wrapper th {
+            background: rgba(99, 102, 241, 0.1);
+            padding: 1rem 1.5rem; text-align: left; font-weight: 600;
+            color: var(--primary); font-size: 0.875rem;
+            text-transform: uppercase; letter-spacing: 0.05em;
+        }
+
+        .table-wrapper td { padding: 1rem 1.5rem; border-top: 1px solid var(--border); }
+
+        .code-block {
+            background: #000; border-radius: 16px; padding: 2rem;
+            font-family: 'JetBrains Mono', monospace; font-size: 0.875rem;
+            overflow-x: auto; margin: 1.5rem 0;
+        }
+
+        .code-block code { white-space: pre; display: block; }
+
+        .cta-final {
+            padding: 6rem 2rem; text-align: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        }
+
+        .cta-final h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+        .cta-final p { font-size: 1.25rem; opacity: 0.9; margin-bottom: 2rem; }
+
+        .cta-final .btn { background: white; color: var(--primary); }
+        .cta-final .btn:hover { box-shadow: 0 6px 20px rgba(255,255,255,0.3); }
+
+        footer {
+            padding: 3rem 2rem; background: var(--bg-dark);
+            border-top: 1px solid var(--border); text-align: center; color: var(--text-secondary);
+        }
+        footer a { color: var(--primary); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.25rem; }
+            .section-title { font-size: 1.75rem; }
+            .book-item { flex-direction: column; align-items: flex-start; }
+            .table-wrapper { font-size: 0.875rem; }
+            .table-wrapper th, .table-wrapper td { padding: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="container">
+            <span class="badge">Cloud-Agnostic &bull; Beginner-Friendly &bull; 2026 AI-Native</span>
+            <h1>SRE in the Age of AI<br>— Starter Kit</h1>
+            <p class="subtitle">A complete beginner's program distilled from Google's open SRE library: a full companion book, a slide deck, a shareable blog post, and hands-on labs — all cloud-agnostic, all aimed at someone on day one in 2026.</p>
+            <div class="cta-group">
+                <a href="https://github.com/irfancode/sre-in-the-age-of-ai" class="btn btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    View Repository
+                </a>
+                <a href="https://irfancode.github.io/sre-in-the-age-of-ai/starter-kit/book.html" class="btn btn-secondary">Read the Book</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">What's in the Starter Kit</h2>
+            <p class="section-subtitle">Four ways in, one mental model. Whatever format you learn fastest, the kit has you covered.</p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: rgba(99, 102, 241, 0.2);">📖</div>
+                    <h3>The Companion Book</h3>
+                    <p>The full read: the trust machine (SLI/SLO/error budgets), designing for failure, the daily loop of monitoring-on-call-postmortem, why heroism is bad, the 2026 AI-autonomy ladder, and a first-90-days plan.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: rgba(16, 185, 129, 0.2);">🎞️</div>
+                    <h3>The Slide Deck</h3>
+                    <p>The whole story in 17 slides. Present it to your team, your study group, or the department that keeps asking "so what's new?". Marp-ready source included.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: rgba(245, 158, 11, 0.2);">✍️</div>
+                    <h3>The Blog Post</h3>
+                    <p>A five-minute version built for sharing. Punchy, jargon-checked, and free of vendor pitches — drop it in a newsletter or forward it to a friend starting out.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: rgba(239, 68, 68, 0.2);">🧪</div>
+                    <h3>The Hands-On Labs</h3>
+                    <p>Lab 0–7: build a pet service, write an SLO by hand, canary it, break it on purpose, run a blameless drill, and write an agent safety charter. Ends with a portfolio-ready "reliability dossier".</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Why this matters in 2026</h2>
+            <p class="section-subtitle">The ideas are timeless; the operating model is brand new.</p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: rgba(99, 102, 241, 0.2);">🤖</div>
+                    <h3>AI is moving into the ops room</h3>
+                    <p>AI agents now enrich alerts, propose incident hypotheses, and investigate outages. Google measured ~10% faster mitigation from hypotheses alone, ~44% faster with auto-built investigation dashboards.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: rgba(16, 185, 129, 0.2);">🪜</div>
+                    <h3>Autonomy is earned, not granted</h3>
+                    <p>The L0–L4 autonomy ladder paces how much control AI gets — gated by transparency, real-time risk evaluation, and progressive authorization. Learn the guardrails before anyone hands you a pager.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: rgba(245, 158, 11, 0.2);">🧠</div>
+                    <h3>Judgment is still human</h3>
+                    <p>Machines nail the known failures and flail at the novel ones — which is where the big outages live. The scarce skill in every production system is still judgment under uncertainty.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon" style="background: rgba(239, 68, 68, 0.2);">🌥️</div>
+                    <h3>Cloud-agnostic everywhere</h3>
+                    <p>Nothing here requires picking a provider. AWS, Azure, GCP, on-prem, or a laptop — the SLI/SLO/error-budget model and the AI-safety framework work identically everywhere.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section table-section">
+        <div class="container">
+            <h2 class="section-title">The one table to memorize</h2>
+            <p class="section-subtitle">What each "nine" actually costs you in allowed downtime per year.</p>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Availability target</th>
+                            <th>Allowed downtime / year</th>
+                            <th>Verdict</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>99%</td><td>~3.65 days</td><td>Fine for prototypes</td></tr>
+                        <tr><td>99.9%</td><td>~8.77 hours</td><td style="color: var(--secondary); font-weight: bold;">The sweet spot for most services</td></tr>
+                        <tr><td>99.99%</td><td>~52.6 minutes</td><td>Pricey but achievable</td></tr>
+                        <tr><td>99.999%</td><td>~5.26 minutes</td><td>Serious systems territory</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">The full project collection</h2>
+            <p class="section-subtitle">Everything in the SRE in the Age of AI project — open the book wherever you are.</p>
+
+            <div class="book-list">
+                <div class="book-item">
+                    <div>
+                        <h4>Site Reliability Engineering in the Age of AI</h4>
+                        <p>The main book: 36 chapters rewriting classic SRE for 2026 — the AI frontier, judgment SLOs, safety SLIs, chaos for agents, and your 90-day roadmap.</p>
+                    </div>
+                    <a class="book-link" href="https://irfancode.github.io/sre-in-the-age-of-ai/">Read →</a>
+                </div>
+                <div class="book-item">
+                    <div>
+                        <h4>Reliability First — The Beginner's Companion Book</h4>
+                        <p>One self-contained guide for people at day one. The trust machine, designing for failure, heroism, and the 2026 autonomy ladder.</p>
+                    </div>
+                    <a class="book-link" href="https://irfancode.github.io/sre-in-the-age-of-ai/starter-kit/book.html">Read →</a>
+                </div>
+                <div class="book-item">
+                    <div>
+                        <h4>Slide Deck</h4>
+                        <p>17 slides, presentation-ready. The same story, minus the footnotes.</p>
+                    </div>
+                    <a class="book-link" href="https://irfancode.github.io/sre-in-the-age-of-ai/starter-kit/slides.html">View →</a>
+                </div>
+                <div class="book-item">
+                    <div>
+                        <h4>Blog Post</h4>
+                        <p>The five-minute version, built for sharing.</p>
+                    </div>
+                    <a class="book-link" href="https://irfancode.github.io/sre-in-the-age-of-ai/starter-kit/blog-post.html">Read →</a>
+                </div>
+                <div class="book-item">
+                    <div>
+                        <h4>Hands-On Labs</h4>
+                        <p>Lab 0–7 toward your reliability dossier, plus templates for SLO documents, postmortems, and agent safety charters.</p>
+                    </div>
+                    <a class="book-link" href="https://irfancode.github.io/sre-in-the-age-of-ai/starter-kit/labs.html">Start →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Quick start</h2>
+            <p class="section-subtitle">Read it, present it, or run the labs — no cloud account required.</p>
+
+            <div class="code-block">
+                <code>git clone https://github.com/irfancode/sre-in-the-age-of-ai.git
+cd sre-in-the-age-of-ai
+# the book lives in /book — the starter kit in /starter-kit
+
+# read the companion book
+open starter-kit/book.md
+
+# run the Labs anywhere you like
+# (Lab 0: stand up a pet service, then break it on purpose)</code>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-final">
+        <div class="container">
+            <h2>Start with judgment. The machines will catch up.</h2>
+            <p>Free. Cloud-agnostic. Built for day one in 2026.</p>
+            <a href="https://github.com/irfancode/sre-in-the-age-of-ai" class="btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                Star on GitHub
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Built with ❤️ by <a href="https://github.com/irfancode">irfancode</a> | <a href="https://github.com/irfancode/sre-in-the-age-of-ai">GitHub Repository</a> | <a href="https://github.com/irfancode/sre-in-the-age-of-ai/issues">Report Issues</a></p>
+            <p style="margin-top: 0.5rem;">Distilled from Google's open SRE library (sre.google/resources). Free forever.</p>
+        </div>
+    </footer>
+</body>
+</html>
